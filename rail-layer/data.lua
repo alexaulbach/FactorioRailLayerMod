@@ -52,7 +52,7 @@ data:extend(
       effectivity = 1,
       fuel_inventory_size = 1,
     },
-    light =
+    front_light =
     {
       {
         type = "oriented",
@@ -85,6 +85,8 @@ data:extend(
         intensity = 0.6
       }
     },
+    back_light = rolling_stock_back_light(),
+    stand_by_light = rolling_stock_stand_by_light(),
     pictures =
     {
       priority = "very-low",
