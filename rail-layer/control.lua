@@ -241,8 +241,8 @@ if game.player.character and game.player.character.vehicle and game.player.chara
 	    end
 	    --diagonal \
 	    if ((raildirection%4==1) and (cargo_straight>1)) then 
-		  placetrack(edge.x+2,edge.y,5,"straight-rail") 
-		  placetrack(edge.x,edge.y,1,"straight-rail") 
+		  placetrack(edge.x+2,edge.y,7,"straight-rail") 
+		  placetrack(edge.x,edge.y-.5,3,"straight-rail") 
 	      if (raildirection==1) then 
 	   	    edge.x=edge.x-2
 		    edge.y=edge.y-2
@@ -254,8 +254,8 @@ if game.player.character and game.player.character.vehicle and game.player.chara
   	    end
 	  --diagonal /
 	    if ((raildirection%4==3) and (cargo_straight>1)) then 
-		  placetrack(edge.x+2,edge.y,7,"straight-rail") 
-		  placetrack(edge.x,edge.y,3,"straight-rail") 
+		  placetrack(edge.x+2,edge.y,1,"straight-rail") 
+		  placetrack(edge.x+.5,edge.y,5,"straight-rail") 
 	      if (raildirection==3) then 
 	   	    edge.x=edge.x-2
 		    edge.y=edge.y+2
@@ -281,7 +281,21 @@ if game.player.character and game.player.character.vehicle and game.player.chara
 		    local success=false
 		    success=placetrack(edge.x+curves[i].xoffset,edge.y+curves[i].yoffset,curves[i].curvedir,"curved-rail")
 	        if ((curves[i].corner==1) and (success)) then
-  			  placetrack(edge.x+curves[i].cornerx, edge.y+curves[i].cornery, curves[i].cornerr, "straight-rail")
+          			if (curves[i].cornerr%2 == 0) then
+            			    placetrack(edge.x+curves[i].cornerx, edge.y+curves[i].cornery, curves[i].cornerr, "straight-rail")
+          			end
+          			if (curves[i].cornerr%8 == 1) then
+          			    placetrack(edge.x+curves[i].cornerx, edge.y+curves[i].cornery-1, 3, "straight-rail")
+          			end
+          			if (curves[i].cornerr%8 == 3) then
+          			    placetrack(edge.x+curves[i].cornerx+.5, edge.y+curves[i].cornery+.5, 1, "straight-rail")
+          			end
+          			if (curves[i].cornerr%8 == 5) then
+          			    placetrack(edge.x+curves[i].cornerx-1, edge.y+curves[i].cornery, 3, "straight-rail")
+          			end
+          			if (curves[i].cornerr%8 == 7) then
+          			    placetrack(edge.x+curves[i].cornerx, edge.y+curves[i].cornery-1, 1, "straight-rail")
+          			end
 	        end
             raildirection=wanteddirection
             edge.x=edge.x+curves[i].xmove
