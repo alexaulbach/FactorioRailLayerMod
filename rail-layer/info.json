@@ -1,0 +1,9 @@
+{
+  "name": "rail-layer",
+  "version": "0.0.5",
+  "title": "Automatic Rail Laying Machine",
+  "author": "kolli",
+  "homepage": " ",
+  "description": "Adds the Automatic Rail Laying Machine.",
+  "dependencies": []
+}
